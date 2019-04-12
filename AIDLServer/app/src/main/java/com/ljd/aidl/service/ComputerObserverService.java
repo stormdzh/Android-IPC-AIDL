@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-public class ComputerObserverService extends Service{
+public class ComputerObserverService extends Service {
     public ComputerObserverService() {
     }
 
@@ -23,7 +23,7 @@ public class ComputerObserverService extends Service{
     private RemoteCallbackList<IOnComputerArrivedListener> mComputerArrivedListenerList = new RemoteCallbackList<>();
     private AtomicBoolean mIsServiceDestroy = new AtomicBoolean(false);
 
-    private Binder mBinder = new IComputerManagerObserver.Stub(){
+    private Binder mBinder = new IComputerManagerObserver.Stub() {
 
         @Override
         public void addComputer(ComputerEntity computer) throws RemoteException {
@@ -49,22 +49,22 @@ public class ComputerObserverService extends Service{
     @Override
     public void onCreate() {
         super.onCreate();
-        mComputerList.add(new ComputerEntity(0,"apple","macbookpro"));
-        mComputerList.add(new ComputerEntity(1,"microsoft","surfacebook"));
-        mComputerList.add(new ComputerEntity(2,"dell","XPS13"));
+        mComputerList.add(new ComputerEntity(0, "apple", "macbookpro"));
+        mComputerList.add(new ComputerEntity(1, "microsoft", "surfacebook"));
+        mComputerList.add(new ComputerEntity(2, "dell", "XPS13"));
         new Thread(new Runnable() {
             @Override
             public void run() {
-                while (!mIsServiceDestroy.get()){
+                while (!mIsServiceDestroy.get()) {
                     try {
                         Thread.currentThread().sleep(3000);
-                        ComputerEntity computer = new ComputerEntity(mComputerList.size(),"******","******");
+                        ComputerEntity computer = new ComputerEntity(mComputerList.size(), "******", "******");
                         mComputerList.add(computer);
                         final int COUNT = mComputerArrivedListenerList.beginBroadcast();
                         //通知所有注册过的用户
-                        for (int i=0;i<COUNT;i++){
+                        for (int i = 0; i < COUNT; i++) {
                             IOnComputerArrivedListener listener = mComputerArrivedListenerList.getBroadcastItem(i);
-                            if (listener != null){
+                            if (listener != null) {
                                 listener.onComputerArrived(computer);
                             }
                         }

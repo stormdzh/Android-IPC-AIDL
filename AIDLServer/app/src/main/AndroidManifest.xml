@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.ljd.aidl">
 
     <permission
@@ -11,7 +12,18 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        tools:ignore="GoogleAppIndexingWarning">
+
+
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <service android:name=".service.CalculateService">
             <intent-filter>
                 <action android:name="com.ljd.aidl.action.CALCULATE_SERVICE" />
@@ -29,6 +41,12 @@
         <service android:name=".service.ComputerService">
             <intent-filter>
                 <action android:name="com.ljd.aidl.action.COMPUTER_SERVICE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </service>
+        <service android:name=".service.BookService">
+            <intent-filter>
+                <action android:name="com.ljd.aidl.action.BOOK_SERVICE"/>
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </service>

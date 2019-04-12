@@ -91,6 +91,7 @@ public class Demo3Activity extends AppCompatActivity {
         @Override
         public void onComputerArrived(ComputerEntity computer) throws RemoteException {
             mHandler.obtainMessage(MESSAGE_COMPUTER_ARRIVED,computer).sendToTarget();
+//            Toast.makeText(getApplicationContext(),"onComputerArrived",Toast.LENGTH_SHORT).show();
         }
     };
 

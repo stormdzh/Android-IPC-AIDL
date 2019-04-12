@@ -26,6 +26,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         button1.setOnClickListener(this);
         button2.setOnClickListener(this);
         button3.setOnClickListener(this);
+
+        findViewById(R.id.button4).setOnClickListener(this);
     }
 
     @Override
@@ -42,6 +44,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 break;
             case R.id.button3:
                 intent.setClass(this,Demo3Activity.class);
+                startActivity(intent);
+                break;
+            case R.id.button4:
+                intent.setClass(this,Demo4Activity.class);
                 startActivity(intent);
                 break;
         }
