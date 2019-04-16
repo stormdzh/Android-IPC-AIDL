@@ -50,6 +50,12 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </service>
+        <service android:name=".service.UserService">
+            <intent-filter>
+                <action android:name="com.ljd.aidl.action.USER_SERVICE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
